@@ -1,0 +1,76 @@
+body {
+  font-size: 14px;
+}
+
+#app {
+  margin: 0 auto;
+  width: 960px;
+}
+
+.title {
+  font-size: 2em;
+  position: absolute;
+  top: 2em;
+  left: 2em;
+}
+
+.current-beer {
+  background: url('../images/keg.png') no-repeat;
+  display: inline-block;
+  margin: 0 auto;
+  height: 650px;
+  position: relative;
+  width: 575px;
+}
+
+.current-beer .name {
+  color: #441100;
+  left: 50px;
+  position: absolute;
+  font-size: 3em;
+  text-align: center;
+  top: 250px;
+  text-shadow: #94704D 1px 1px, #B49B82 2px 2px;
+  width: 275px;
+}
+
+.current-beer .brewery {
+  position: absolute;
+  width: 300px;
+  top: 510px;
+  left: 75px;
+  font-size: 2em;
+  text-align: center;
+}
+
+.current-beer .origin {
+  left: 55px;
+  top: 540px;
+  width: 350px;
+  text-align: center;
+  position: absolute;
+}
+
+.current-beer .details {
+  left: 0;
+  padding: 2px;
+  position: absolute;
+  right: 0;
+  top: 650px;
+}
+
+.current-beer .details > * {
+  display: inline;
+}
+
+.upcoming-beers, .past-beers {
+  border: 5px solid black;
+  display: inline-block;
+  height: 25em;
+  margin-top: 25em;
+  width: 171px; 
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  padding: 2px;
+  vertical-align: top;
+}
