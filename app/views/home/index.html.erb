@@ -12,22 +12,22 @@
 <div class="current-beer">
 	<h2>Current Beer</h2>
 
-	<span class="name">420</span>
-	<span class="brewery">SweetWater</span>
-	<span class="origin">USA - Georgia - Atlanta</span>
+	<span class="name"><%= @current_beer.name %></span>
+	<span class="brewery"><%= @current_beer.brewery %></span>
+	<span class="origin"><%= @current_beer.origin %></span>
 
 	<dl class="details">
 		<dt>Website</dt>
-		<dd><a href="http://sweetwaterbrewery.com">SweetWater 420</a></dd>
+		<dd><a href="<%= @current_beer.website %>"><%= @current_beer.brewery %> <%= @current_beer.name %></a></dd>
 
 		<dt>Alcohol %</dt>
-		<dd>5.5</dd>
+		<dd><%= @current_beer.alcohol %></dd>
 
 		<dt>Requested by</dt>
-		<dd>Steve Harman</dd>
+		<dd><%= @current_beer.requested_by %></dd>
 
 		<dt>On tap since</dt>
-		<dd>2/12/2011</dd>
+		<dd><%= @current_beer.date_tapped %></dd>
 	</dl>
 </div>
 
