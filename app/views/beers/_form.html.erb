@@ -1,0 +1,57 @@
+<%= form_for(@beer) do |f| %>
+  <% if @beer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@beer.errors.count, "error") %> prohibited this beer from being saved:</h2>
+
+      <ul>
+      <% @beer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :brewery %><br />
+    <%= f.text_field :brewery %>
+  </div>
+  <div class="field">
+    <%= f.label :origin %><br />
+    <%= f.text_field :origin %>
+  </div>
+  <div class="field">
+    <%= f.label :picture %><br />
+    <%= f.text_field :picture %>
+  </div>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="field">
+    <%= f.label :date_tapped %><br />
+    <%= f.date_select :date_tapped %>
+  </div>
+  <div class="field">
+    <%= f.label :date_emptied %><br />
+    <%= f.date_select :date_emptied %>
+  </div>
+  <div class="field">
+    <%= f.label :alcohol %><br />
+    <%= f.text_field :alcohol %>
+  </div>
+  <div class="field">
+    <%= f.label :requested_by %><br />
+    <%= f.text_field :requested_by %>
+  </div>
+  <div class="field">
+    <%= f.label :emptied_by %><br />
+    <%= f.text_field :emptied_by %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
