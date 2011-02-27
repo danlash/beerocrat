@@ -1,4 +1,5 @@
 body {
+  font-family: Comic Sans MS, Comic Sans MS, cursive;
   font-size: 14px;
 }
 
@@ -25,7 +26,7 @@ body {
 
 .current-beer .name {
   color: #441100;
-  left: 50px;
+  left: 65px;
   position: absolute;
   font-size: 3em;
   text-align: center;
@@ -63,14 +64,38 @@ body {
   display: inline;
 }
 
-.upcoming-beers, .past-beers {
+.upcoming-beers {
   border: 5px solid black;
   display: inline-block;
   height: 25em;
   margin-top: 25em;
-  width: 171px; 
+  width: 106px; 
   border-radius: 10px;
   -moz-border-radius: 10px;
   padding: 2px;
   vertical-align: top;
+}
+
+.past-beers {
+    background-image: url(../images/mice.png);
+    display: inline-block;
+    height: 186px; /* 221 - 35 */
+    margin-top: 10em;
+    padding-top: 35px;
+    width: 236px;
+    vertical-align: top;
+}
+
+.past-beers .beer {
+  color: #4411ff;
+  font-size: 0.75em;
+  height: 2em;
+  margin-left: 85px;
+  text-shadow: #94704D 1px 1px, #fff 2px 2px;
+  width: 75px;
+  overflow: hidden;
+}
+
+.past-beers .beer .emptied_by, .past-beers .beer .date_emptied {
+  display: none; 
 }
