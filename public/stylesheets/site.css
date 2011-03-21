@@ -8,11 +8,32 @@ body {
   width: 960px;
 }
 
-.title {
+.title { /* http://www.fotosearch.com/clip-art/mug-beer.html */
+  background-image: url(../images/beerocrat.png);
+  background-repeat: no-repeat;
   font-size: 2em;
+  font-family: Trebuchet MS, Trebuchet MS, sans-serif;
+  height: 198px;
+  letter-spacing: 0.15em;
+  padding-top: 160px;
   position: absolute;
-  top: 2em;
-  left: 2em;
+  top: 0em;
+  left: 1em;
+  z-index: 1;
+
+  text-shadow: 
+   #9D5D00 1px 1px, 
+   #D87E00 2px 2px, 
+   #FCF69D 3px 3px, 
+   #9D5D00 -1px 1px, 
+   #D87E00 -2px 2px, 
+   #FCF69D -3px 3px, 
+   #9D5D00 -1px -1px, 
+   #D87E00 -2px -2px, 
+   #FCF69D -3px -3px, 
+   #9D5D00 1px -1px, 
+   #D87E00 2px -2px, 
+   #FCF69D 3px -3px; 
 }
 
 .current-beer {
@@ -53,44 +74,56 @@ body {
 }
 
 .current-beer .details {
-  left: 0;
+  left: 575px;
   padding: 2px;
   position: absolute;
   right: 0;
-  top: 650px;
+  top: 400px;
+  width: 236px;
 }
 
-.current-beer .details > * {
-  display: inline;
+.current-beer .details .label  {
+  display: inline-block;
+  width: 100px;
+}
+
+.current-beer .details .value {
+  display: inline-block;
+  width: 130px;
 }
 
 .upcoming-beers {
-  border: 5px solid black;
+  color: #441133;
+  background-image: url(../images/scroll.png);
   display: inline-block;
-  height: 25em;
-  margin-top: 25em;
+  height: 127px;/* 142 - 15 */
+  margin-top: 40em;
+  padding-top: 15px;
   width: 106px; 
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  padding: 2px;
   vertical-align: top;
 }
 
+.upcoming-beers .beer, .upcoming-beers .beer > * {
+  font-size: 0.9em;
+  margin-left: 7px;
+}
+
 .past-beers {
-    background-image: url(../images/mice.png);
-    display: inline-block;
-    height: 186px; /* 221 - 35 */
-    margin-top: 10em;
-    padding-top: 35px;
-    width: 236px;
-    vertical-align: top;
+  background-image: url(../images/mice.png);
+  display: inline-block;
+  height: 196px; /* 221 - 25 */
+  margin-top: 10em;
+  padding-top: 25px;
+  width: 236px;
+  vertical-align: top;
+
 }
 
 .past-beers .beer {
-  color: #4411ff;
+  color: #441133;
   font-size: 0.75em;
-  height: 2em;
-  margin-left: 85px;
+  height: 2.25em;
+  margin-left: 83px;
   text-shadow: #94704D 1px 1px, #fff 2px 2px;
   width: 75px;
   overflow: hidden;

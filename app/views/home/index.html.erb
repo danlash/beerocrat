@@ -1,4 +1,4 @@
-<h1 class="title">Beer-O-Crat</h1>
+<h1 class="title">beer-o-crat</h1>
 
 <ul class="upcoming-beers">
 	<li class="beer">
@@ -14,44 +14,28 @@
 	<span class="origin"><%= @current_beer.origin %></span>
 
 	<dl class="details">
-		<dt>Website</dt>
-		<dd><a href="<%= @current_beer.website %>"><%= @current_beer.brewery %> <%= @current_beer.name %></a></dd>
+		<dt class="label">Website</dt>
+		<dd class="value"><a href="<%= @current_beer.website %>"><%= @current_beer.brewery %> <%= @current_beer.name %></a></dd>
 
-		<dt>Alcohol %</dt>
-		<dd><%= @current_beer.alcohol %></dd>
+		<dt class="label">Alcohol %</dt>
+		<dd class="value"><%= @current_beer.alcohol %></dd>
 
-		<dt>Requested by</dt>
-		<dd><%= @current_beer.requested_by %></dd>
+		<dt class="label">Requested by</dt>
+		<dd class="value"><%= @current_beer.requested_by %></dd>
 
-		<dt>On tap since</dt>
-		<dd><%= @current_beer.date_tapped %></dd>
+		<dt class="label">On tap since</dt>
+		<dd class="value"><%= @current_beer.date_tapped %></dd>
 	</dl>
 </div>
 
 <ul class="past-beers">
-	<li class="beer"> <!-- limit to 5 -->
-		<span class="name">Fat Tire</span>
-		<span class="emptied_by">Dan Lash</span>
-		<span class="date_emptied">2011-02-17</span>
-	</li>
-		<li class="beer">
-		<span class="name">Fat Tire</span>
-		<span class="emptied_by">Dan Lash</span>
-		<span class="date_emptied">2011-02-17</span>
-	</li>
-	<li class="beer">
-		<span class="name">Fat Tire</span>
-		<span class="emptied_by">Dan Lash</span>
-		<span class="date_emptied">2011-02-17</span>
-	</li>
-	<li class="beer">
-		<span class="name">Fat Tire</span>
-		<span class="emptied_by">Dan Lash</span>
-		<span class="date_emptied">2011-02-17</span>
-	</li>
-	<li class="beer">
-		<span class="name">Fat Tire</span>
-		<span class="emptied_by">Dan Lash</span>
-		<span class="date_emptied">2011-02-17</span>
-	</li>
+
+<% @past_beers.each do |beer| -%>
+<li class="beer">
+	<span class="name"><%= beer.name %></span>
+	<span class="emptied_by"><%= beer.emptied_by %></span>
+	<span class="date_emptied"><%= beer.date_emptied %></span>
+</li>
+<% end -%>
+
 </ul>
