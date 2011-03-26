@@ -80,4 +80,15 @@ class BeersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  def untap
+    @beer = Beer.find(params[:id])
+    @beer.untap
+    @beer.save #could throw exception, rescue?
+
+    respond_to do |format|
+        format.json { render :json => @beer }
+    end
+  end
 end

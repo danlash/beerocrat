@@ -39,3 +39,33 @@
 <% end -%>
 
 </ul>
+
+<form action="<%= untap_beer_path(@current_beer.id) %>" method="post" id="untap_form">
+<button type="submit" >Untap</button>
+</form>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery-ui/1.8.11/jquery-ui.min.js"></script>
+    
+<script type="text/javascript">
+$(function(){
+	var $untapForm = $('#untap_form');
+	$untapForm.submit(function(e){
+		e.preventDefault();
+
+		$.ajax({
+			url: $untapForm.attr('action'),
+			type: $untapForm.attr('method'),
+			data: $untapForm.serialize(),
+			success: function(response){
+				debugger
+				alert(response.beer.name)
+			},
+			error: function(a,b,c,d){
+				debugger
+				alert('it didnt work')
+			}
+		})
+	})
+})
+</script>
