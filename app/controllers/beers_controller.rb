@@ -46,6 +46,7 @@ class BeersController < ApplicationController
       if @beer.save
         format.html { redirect_to(@beer, :notice => 'Beer was successfully created.') }
         format.xml  { render :xml => @beer, :status => :created, :location => @beer }
+        format.json { render :json => @beer }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @beer.errors, :status => :unprocessable_entity }

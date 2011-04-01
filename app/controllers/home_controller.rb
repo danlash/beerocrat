@@ -1,9 +1,13 @@
 class HomeController < ApplicationController
   def index
   	b = Beer.arel_table
-	@current_beer = Beer.where(b[:date_emptied].eq(nil)).first #date tapped should be not nil
-	#current could be null
-	@past_beers = Beer.where(b[:date_emptied].gt(Date.new)).limit(5)
+debugger
+	@current_beer = Beer.where(b[:date_tapped].not_eq(nil)).where(b[:date_emptied].eq(nil)).first 
+
+	@upcoming_beers = Beer.where(b[:date_tapped].eq(nil)).where(b[:date_emptied].eq(nil)).limit(5)
+
+	@past_beers = Beer.where(b[:date_tapped].not_eq(nil)).where(b[:date_emptied].not_eq(nil)).limit(5)
+	
 	respond_to do |format|
       format.html
     end

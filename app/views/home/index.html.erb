@@ -1,14 +1,19 @@
 <h1 class="title">beer-o-crat</h1>
 
 <ul class="upcoming-beers">
+
+<% @upcoming_beers.each do |beer| %>
 	<li class="beer">
-		<span class="name">Fat Tire</span>
-		<span class="brewery">SweetWater</span>
-		<span class="requested-by">Ian Culling</span>
+		<span class="name"><%= @beer.name %></span>
+		<span class="brewery"><%= @beer.brewery %></span>
+		<span class="requested-by"><%= @beer.requested_by %></span>
 	</li>
+<% end %>
+
 </ul>
 
 <div class="current-beer">
+<% if @current_beer %>
 	<span class="name"><%= @current_beer.name %></span>
 	<span class="brewery"><%= @current_beer.brewery %></span>
 	<span class="origin"><%= @current_beer.origin %></span>
@@ -26,22 +31,41 @@
 		<dt class="label">On tap since</dt>
 		<dd class="value"><%= @current_beer.date_tapped %></dd>
 	</dl>
+<% end %>
 </div>
 
 <ul class="past-beers">
 
 <% @past_beers.each do |beer| -%>
-<li class="beer">
-	<span class="name"><%= beer.name %></span>
-	<span class="emptied_by"><%= beer.emptied_by %></span>
-	<span class="date_emptied"><%= beer.date_emptied %></span>
-</li>
+	<li class="beer">
+		<span class="name"><%= beer.name %></span>
+		<span class="emptied_by"><%= beer.emptied_by %></span>
+		<span class="date_emptied"><%= beer.date_emptied %></span>
+	</li>
 <% end -%>
 
 </ul>
 
+<% if @current_beer %>
 <form action="<%= untap_beer_path(@current_beer.id) %>" method="post" id="untap_form">
-<button type="submit" >Untap</button>
+	<button type="submit" >Untap</button>
+</form>
+<% end %>
+
+<form action="<%= beers_path() %>" method="post" id="request_form">
+	<label>
+		Your Name
+		<input type="text" name="beer[requested_by]" />
+	</label>
+	<label>
+		Beer Name
+		<input type="text" name="beer[name]" />
+	</label>
+	<label>
+		Brewery Name
+		<input type="text" name="beer[brewery]" />
+	</label>
+	<button type="submit" >Request</button>
 </form>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
