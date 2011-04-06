@@ -4,9 +4,14 @@
 
 <% @upcoming_beers.each do |beer| %>
 	<li class="beer">
-		<span class="name"><%= @beer.name %></span>
-		<span class="brewery"><%= @beer.brewery %></span>
-		<span class="requested-by"><%= @beer.requested_by %></span>
+		<span class="name"><%= beer.name %></span>
+		<span class="brewery"><%= beer.brewery  %></span>
+		<span class="requested-by"><%= beer.requested_by %></span>
+		
+		<form action="<%= tap_beer_path(beer.id) %>" method="post" class="tap-form">
+			<button type="submit" >Tap</button>
+		</form>
+
 	</li>
 <% end %>
 

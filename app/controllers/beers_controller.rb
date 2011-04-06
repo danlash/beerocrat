@@ -49,11 +49,11 @@ class BeersController < ApplicationController
         format.json { render :json => @beer }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @beer.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @beer.errors }
       end
     end
   end
-
+  
   # PUT /beers/1
   # PUT /beers/1.xml
   def update
@@ -82,10 +82,19 @@ class BeersController < ApplicationController
     end
   end
 
-
   def untap
     @beer = Beer.find(params[:id])
     @beer.untap
+    @beer.save #could throw exception, rescue?
+
+    respond_to do |format|
+        format.json { render :json => @beer }
+    end
+  end
+  
+  def tap
+    @beer = Beer.find(params[:id])
+    @beer.tap
     @beer.save #could throw exception, rescue?
 
     respond_to do |format|

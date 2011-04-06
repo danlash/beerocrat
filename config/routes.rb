@@ -6,6 +6,7 @@ Beerocrat::Application.routes.draw do
   resources :beers do
     member do
       post 'untap'
+      post 'tap'
     end
   end
 
