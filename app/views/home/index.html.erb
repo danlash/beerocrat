@@ -73,11 +73,13 @@
 	<button type="submit" >Request</button>
 </form>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery-ui/1.8.11/jquery-ui.min.js"></script>
+<%= javascript_include_tag 'jquery.1.5.1.min' %>
+<%= javascript_include_tag 'jquery-ui-1.8.11.custom.min' %>
     
 <script type="text/javascript">
 $(function(){
+	return //no ajax
+	
 	var $untapForm = $('#untap_form');
 	$untapForm.submit(function(e){
 		e.preventDefault();
@@ -93,6 +95,25 @@ $(function(){
 			error: function(a,b,c,d){
 				debugger
 				alert('it didnt work')
+			}
+		})
+	})
+	
+	var $tapForms = $('.tap-form');
+	$tapForms.submit(function(e){
+		e.preventDefault();
+
+		var $tapForm = $(this);
+		
+		$.ajax({
+			url: $tapForm.attr('action'),
+			type: $tapForm.attr('method'),
+			data: $tapForm.serialize(),
+			success: function(response){
+				debugger
+			},
+			error: function(a,b,c,d){
+				debugger
 			}
 		})
 	})

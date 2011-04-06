@@ -44,7 +44,7 @@ class BeersController < ApplicationController
 
     respond_to do |format|
       if @beer.save
-        format.html { redirect_to(@beer, :notice => 'Beer was successfully created.') }
+        format.html { redirect_to(:controller => 'home', :action => 'index') }
         format.xml  { render :xml => @beer, :status => :created, :location => @beer }
         format.json { render :json => @beer }
       else
@@ -88,6 +88,7 @@ class BeersController < ApplicationController
     @beer.save #could throw exception, rescue?
 
     respond_to do |format|
+		format.html { redirect_to(:controller => 'home', :action => 'index') }
         format.json { render :json => @beer }
     end
   end
@@ -98,6 +99,7 @@ class BeersController < ApplicationController
     @beer.save #could throw exception, rescue?
 
     respond_to do |format|
+        format.html { redirect_to(:controller => 'home', :action => 'index') }
         format.json { render :json => @beer }
     end
   end
