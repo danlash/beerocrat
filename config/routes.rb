@@ -7,6 +7,7 @@ Beerocrat::Application.routes.draw do
     member do
       post 'untap'
       post 'tap'
+      post 'describe'
     end
   end
 

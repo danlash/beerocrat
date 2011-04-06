@@ -36,6 +36,8 @@
 		<dt class="label">On tap since</dt>
 		<dd class="value"><%= @current_beer.date_tapped %></dd>
 	</dl>
+	
+	<button class="describe">Describe</button>
 <% end %>
 </div>
 
@@ -47,13 +49,40 @@
 		<span class="emptied_by"><%= beer.emptied_by %></span>
 		<span class="date_emptied"><%= beer.date_emptied %></span>
 	</li>
-<% end -%>
+<% end %>
 
 </ul>
 
 <% if @current_beer %>
 <form action="<%= untap_beer_path(@current_beer.id) %>" method="post" id="untap_form">
 	<button type="submit" >Untap</button>
+</form>
+
+<form action="<%= describe_beer_path(@current_beer.id) %>" method="post" id="describe_form">
+	<label>
+		Name
+		<input type="text" name="beer[name]" value="<%= @current_beer.name %>" />
+	</label>
+		<label>
+		Brewery
+		<input type="text" name="beer[brewery]" value="<%= @current_beer.brewery %>" />
+	</label>
+		<label>
+		Origin
+		<input type="text" name="beer[origin]" value="<%= @current_beer.origin %>" />
+	</label>
+		<label>
+		Picture (url)
+		<input type="text" name="beer[picture]" value="<%= @current_beer.picture %>" />
+	</label>
+		<label>
+		Website
+		<input type="text" name="beer[website]" value="<%= @current_beer.website %>" />
+	</label>
+		<label>
+		Alcohol %
+		<input type="text" name="beer[alcohol]" value="<%= @current_beer.alcohol %>" />
+	</label>
 </form>
 <% end %>
 
@@ -78,44 +107,17 @@
     
 <script type="text/javascript">
 $(function(){
-	return //no ajax
-	
-	var $untapForm = $('#untap_form');
-	$untapForm.submit(function(e){
-		e.preventDefault();
-
-		$.ajax({
-			url: $untapForm.attr('action'),
-			type: $untapForm.attr('method'),
-			data: $untapForm.serialize(),
-			success: function(response){
-				debugger
-				alert(response.beer.name)
-			},
-			error: function(a,b,c,d){
-				debugger
-				alert('it didnt work')
+	$('.describe').click(function(e){
+		$('#describe_form').dialog({
+			title: "Describe the current beer on tap",
+			buttons: {
+				Cancel: function(){ $(this).dialog('close'); },
+				Ok: function() {  
+					$(this).submit();
+				}
 			}
 		})
 	})
 	
-	var $tapForms = $('.tap-form');
-	$tapForms.submit(function(e){
-		e.preventDefault();
-
-		var $tapForm = $(this);
-		
-		$.ajax({
-			url: $tapForm.attr('action'),
-			type: $tapForm.attr('method'),
-			data: $tapForm.serialize(),
-			success: function(response){
-				debugger
-			},
-			error: function(a,b,c,d){
-				debugger
-			}
-		})
-	})
 })
 </script>

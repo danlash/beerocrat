@@ -132,3 +132,7 @@ body {
 .past-beers .beer .emptied_by, .past-beers .beer .date_emptied {
   display: none; 
 }
+
+#describe_form {
+  display: none;
+}

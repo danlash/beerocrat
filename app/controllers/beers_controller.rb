@@ -62,23 +62,18 @@ class BeersController < ApplicationController
     respond_to do |format|
       if @beer.update_attributes(params[:beer])
         format.html { redirect_to(@beer, :notice => 'Beer was successfully updated.') }
-        format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @beer.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /beers/1
-  # DELETE /beers/1.xml
   def destroy
     @beer = Beer.find(params[:id])
     @beer.destroy
 
     respond_to do |format|
       format.html { redirect_to(beers_url) }
-      format.xml  { head :ok }
     end
   end
 
@@ -101,6 +96,20 @@ class BeersController < ApplicationController
     respond_to do |format|
         format.html { redirect_to(:controller => 'home', :action => 'index') }
         format.json { render :json => @beer }
+    end
+  end
+  
+  def describe #this is the same as update - cant figure out path to update 
+    @beer = Beer.find(params[:id])
+
+    respond_to do |format|
+      if @beer.update_attributes(params[:beer])
+        format.html { redirect_to(:controller => 'home', :action => 'index') }
+        format.json { render :json => @beer }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @beer.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end
