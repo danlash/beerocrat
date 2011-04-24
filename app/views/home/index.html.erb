@@ -25,7 +25,13 @@
 
 	<dl class="details">
 		<dt class="label">Website</dt>
-		<dd class="value"><a href="<%= @current_beer.website %>"><%= @current_beer.brewery %> <%= @current_beer.name %></a></dd>
+		<dd class="value">
+			<% unless @current_beer.website.empty? %>
+				<a href="<%= @current_beer.website %>"><%= @current_beer.brewery %> <%= @current_beer.name %></a>
+			<% else %>
+				<%= @current_beer.brewery %> <%= @current_beer.name %>
+			<% end %>
+		</dd>
 
 		<dt class="label">Alcohol %</dt>
 		<dd class="value"><%= @current_beer.alcohol %></dd>
