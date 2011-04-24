@@ -95,7 +95,14 @@ body {
 .current-beer .describe-button {
   position: absolute;
   top: 40em;
-  right: 0;
+  right: 3em;
+}
+
+
+.current-beer .untap-button {
+  position: absolute;
+  top: 42em;
+  right: 3em;
 }
 
 .upcoming-beers {

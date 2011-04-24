@@ -43,6 +43,7 @@
 	</dl>
 	
 	<button class="describe-button">Describe</button>
+	<button class="untap-button">Untap</button>
 <% end %>
 </div>
 
@@ -59,7 +60,6 @@
 </ul>
 
 <% if @current_beer %>
-<button class="untap-button">Untap</button>
 <form action="<%= untap_beer_path(@current_beer.id) %>" method="post" id="untap_form">
 	<label>
 		Name of the lucky winner
