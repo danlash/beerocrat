@@ -9,7 +9,6 @@
 		<span class="requested-by"><%= beer.requested_by %></span>
 		
 		<form action="<%= tap_beer_path(beer.id) %>" method="post" class="tap-form">
-			<button type="submit" >Tap</button>
 		</form>
 
 	</li>
@@ -162,7 +161,7 @@ $(function(){
 			buttons: {
 				"Maybe next time": function(){ $(this).dialog('close'); },
 				"Tapped it": function() {  
-					$(this).submit();
+					$(this).find('form').submit();
 				}
 			}
 		})
