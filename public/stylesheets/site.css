@@ -92,6 +92,12 @@ body {
   width: 130px;
 }
 
+.current-beer .describe-button {
+  position: absolute;
+  top: 40em;
+  right: 0;
+}
+
 .upcoming-beers {
   color: #441133;
   background-image: url(../images/scroll.png);
@@ -150,6 +156,10 @@ body {
 }
 
 form label {
+  display: block;
+}
+
+form label > * {
   display: block;
 }
 
