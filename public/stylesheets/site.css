@@ -106,6 +106,17 @@ body {
 .upcoming-beers .beer, .upcoming-beers .beer > * {
   font-size: 0.9em;
   margin-left: 7px;
+  display: none;
+}
+
+.ui-dialog .beer, .ui-dialog .beer > * {
+  font-size: 0.9em;
+  margin-left: 7px;
+  display: block;
+}
+
+.upcoming-beers .beer, .upcoming-beers .beer .name {
+  display: block;
 }
 
 .past-beers {
@@ -133,6 +144,12 @@ body {
   display: none; 
 }
 
-#describe_form {
+#describe_form, #request_form, #untap_form {
   display: none;
+  
 }
+
+form label {
+  display: block;
+}
+

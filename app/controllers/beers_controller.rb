@@ -79,7 +79,7 @@ class BeersController < ApplicationController
 
   def untap
     @beer = Beer.find(params[:id])
-    @beer.untap
+    @beer.untap(params[:emptied_by])
     @beer.save #could throw exception, rescue?
 
     respond_to do |format|

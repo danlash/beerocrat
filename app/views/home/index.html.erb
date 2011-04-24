@@ -26,7 +26,7 @@
 	<dl class="details">
 		<dt class="label">Website</dt>
 		<dd class="value">
-			<% unless @current_beer.website.empty? %>
+			<% unless @current_beer.website %>
 				<a href="<%= @current_beer.website %>"><%= @current_beer.brewery %> <%= @current_beer.name %></a>
 			<% else %>
 				<%= @current_beer.brewery %> <%= @current_beer.name %>
@@ -43,7 +43,7 @@
 		<dd class="value"><%= @current_beer.date_tapped %></dd>
 	</dl>
 	
-	<button class="describe">Describe</button>
+	<button class="describe-button">Describe</button>
 <% end %>
 </div>
 
@@ -60,8 +60,12 @@
 </ul>
 
 <% if @current_beer %>
+<button class="untap-button">Untap</button>
 <form action="<%= untap_beer_path(@current_beer.id) %>" method="post" id="untap_form">
-	<button type="submit" >Untap</button>
+	<label>
+		Name of the lucky winner
+		<input type="text" name="emptied_by" />
+	</label>
 </form>
 
 <form action="<%= describe_beer_path(@current_beer.id) %>" method="post" id="describe_form">
@@ -92,6 +96,7 @@
 </form>
 <% end %>
 
+<button class="request-beer-button">Request Beer</button>
 <form action="<%= beers_path() %>" method="post" id="request_form">
 	<label>
 		Your Name
@@ -105,7 +110,6 @@
 		Brewery Name
 		<input type="text" name="beer[brewery]" />
 	</label>
-	<button type="submit" >Request</button>
 </form>
 
 <%= javascript_include_tag 'jquery.1.5.1.min' %>
@@ -113,7 +117,7 @@
     
 <script type="text/javascript">
 $(function(){
-	$('.describe').click(function(e){
+	$('.describe-button').click(function(e){
 		$('#describe_form').dialog({
 			title: "Describe the current beer on tap",
 			buttons: {
@@ -125,5 +129,52 @@ $(function(){
 		})
 	})
 	
+	$('.untap-button').click(function(){
+		$('#untap_form').dialog({
+			title: 'Untap the current beer',
+			buttons: {
+				"Oops, it didn't": function(){ $(this).dialog('close'); },
+				"We'll get another one": function() {  
+					$(this).submit();
+				}
+			},
+			width: 350,
+			height: 200
+		});	
+	})
+	
+	$('.request-beer-button').click(function(){
+		$('#request_form').dialog({
+			title: 'Request a beer',
+			buttons: {
+				"I forgot": function(){ $(this).dialog('close'); },
+				"We should get this": function() {  
+					$(this).submit();
+				}
+			}
+		});	
+	})
+	
+	//this removes from the dom, look how to clone instead
+	$('.upcoming-beers .beer, .upcoming-beers .beer .name').click(function(){
+		$(this).closest('.beer').dialog({
+			title: 'Beer details',
+			buttons: {
+				"Maybe next time": function(){ $(this).dialog('close'); },
+				"Tapped it": function() {  
+					$(this).submit();
+				}
+			}
+		})
+	})
+	
+	$('.past-beers .beer, .past-beers .beer .name').click(function(){
+		$(this).closest('.beer').dialog({
+			title: 'Beer details',
+			buttons: {
+				"Got it": function(){ $(this).dialog('close'); }
+			}
+		})
+	})
 })
 </script>
